@@ -25,7 +25,7 @@ body{
 }
 #root{
     margin: 0 auto;
-    background-color: aqua;
+    background-color: #c4c4c4;
     height: 95%;
     width: 90%;
     position: absolute;
@@ -37,14 +37,12 @@ body{
 }
 .chats{
     height: 100%;
-    width: 30%;
-    background-color: rosybrown;
-    
+    width: 30%;    
 }
 .currentChat{
     height: 100%;
     width: 70%;
-    background-color: sienna;
+    background-color: #c4c4c4;
 }
 /*userField*/
 .userField{
@@ -53,7 +51,7 @@ body{
     background-color: #EAEAEA;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; 
 }
 .userField img {
     height: 50px;
@@ -69,6 +67,10 @@ body{
     display: flex;
     align-items: center;
     cursor: pointer;
+}
+.imgName P {
+    color: #B6B9BB;
+    font-size: 11px;
 }
 /* notify */
 .notify {
@@ -135,11 +137,10 @@ input:focus-visible {
 }
 .contactContainer{
     height: 80px;
-    padding: 8px 16px;
+    padding: 10px 16px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    border: 1px solid black;
 }
 .avatarImg img {
     height: 60px;
@@ -148,12 +149,83 @@ input:focus-visible {
 .imgText {
     display: flex;
 }
+.nameContact {
+    margin-left: 16px;
+}
+.nameContact h4 {
+    margin-bottom: 4px;
+}
 .nameContact p {
     font-size: 13px;
+    color: #B6B9BB;
 }
 .dateTime p {
     font-size: 11px;
+    color: #B6B9BB;
 }
+/*START CURRENT CHAT*/
+/*chatbox*/
+.messages {
+    height: calc(100% - 140px);
+    background-image: url(../img/mine.jpg);
+    background-position: center;
+    overflow-y: scroll;
+    padding: 32px 88px;
+    display: flex;
+    flex-direction: column;
+}
+.msg {
+    height: 40px;
+    width: 250px;
+    padding: 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 4px 0;
+}
+.sentRow {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sent {
+    background-color: #D5F9BA;
+}
+.recived {
+    background-color: #fff;
+}
+.msg p{
+    font-size: 13px;
+}
+.hour {
+    font-size: 11px !important;
+    color: #B6B9BB;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+}
+/*write messages*/
+.writeMsgContainer {
+    height: 70px;
+    padding: 8px 32px;
+    background-color: #F3EEEA;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.writeMsgContainer i {
+    color: #6B7376;
+    cursor: pointer;
+}
+.writeMsgContainer input {
+    width: 100%;
+    margin: 0 24px;
+    padding: 16px 8px;
+    border: none;
+    border-radius: 5px;
+}
+
 
 
 @media all and (max-width: 999px ){
