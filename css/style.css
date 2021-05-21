@@ -196,9 +196,11 @@ input:focus-visible {
 }
 
 .sent {
+    float: right;
     background-color: #D5F9BA;
 }
-.recived {
+.received {
+    float: left;
     background-color: #fff;
 }
 .msg p{

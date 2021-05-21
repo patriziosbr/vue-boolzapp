@@ -1,96 +1,94 @@
-var app = new Vue(
-    {
+var app = new Vue({
     el: "#root",
     data: {
         contacts: [
-        {
-            name: 'Michele',
-            avatar: '_1',
-            visible: true,
-            messages: [
-                {
-                    date: '10/01/2020 15:30:55',
-                    text: 'Hai portato a spasso il cane?',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 15:50:00',
-                    text: 'Ricordati di dargli da mangiare',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 16:15:22',
-                    text: 'Tutto fatto!',
-                    status: 'received'
-                }
-            ],
-        },
-        {
-            name: 'Fabio',
-            avatar: '_2',
-            visible: true,
-            messages: [
-                {
-                    date: '20/03/2020 16:30:00',
-                    text: 'Ciao come stai?',
-                    status: 'sent'
-                },
-                {
-                    date: '20/03/2020 16:30:55',
-                    text: 'Bene grazie! Stasera ci vediamo?',
-                    status: 'received'
-                },
-                {
-                    date: '20/03/2020 16:35:00',
-                    text: 'Mi piacerebbe ma devo andare a fare la spesa.',
-                    status: 'sent'
-                }
-            ],
-        },     
-        {
-            name: 'Samuele',
-            avatar: '_3',
-            visible: true,
-            messages: [
-                {
-                    date: '28/03/2020 10:10:40',
-                    text: 'La Marianna va in campagna',
-                    status: 'received'
-                },
-                {
-                    date: '28/03/2020 10:20:10',
-                    text: 'Sicuro di non aver sbagliato chat?',
-                    status: 'sent'
-                },
-                {
-                    date: '28/03/2020 16:15:22',
-                    text: 'Ah scusa!',
-                    status: 'received'
-                }
-            ],
-        },
-        {
-            name: 'Luisa',
-            avatar: '_4',
-            visible: true,
-            messages: [
-                {
-                    date: '10/01/2020 15:30:55',
-                    text: 'Lo sai che ha aperto una nuova pizzeria?',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 15:50:00',
-                    text: 'Si, ma preferirei andare al cinema',
-                    status: 'received'
-                }
-            ],
-        },
+            {
+                name: 'Michele',
+                avatar: '_1',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        text: 'Hai portato a spasso il cane?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        text: 'Ricordati di dargli da mangiare',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 16:15:22',
+                        text: 'Tutto fatto!',
+                        status: 'received'
+                    }
+                ],
+            },
+            {
+                name: 'Fabio',
+                avatar: '_2',
+                visible: true,
+                messages: [
+                    {
+                        date: '20/03/2020 16:30:00',
+                        text: 'Ciao come stai?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '20/03/2020 16:30:55',
+                        text: 'Bene grazie! Stasera ci vediamo?',
+                        status: 'received'
+                    },
+                    {
+                        date: '20/03/2020 16:35:00',
+                        text: 'Mi piacerebbe ma devo andare a fare la spesa.',
+                        status: 'sent'
+                    }
+                ],
+            },     
+            {
+                name: 'Samuele',
+                avatar: '_3',
+                visible: true,
+                messages: [
+                    {
+                        date: '28/03/2020 10:10:40',
+                        text: 'La Marianna va in campagna',
+                        status: 'received'
+                    },
+                    {
+                        date: '28/03/2020 10:20:10',
+                        text: 'Sicuro di non aver sbagliato chat?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '28/03/2020 16:15:22',
+                        text: 'Ah scusa!',
+                        status: 'received'
+                    }
+                ],
+            },
+            {
+                name: 'Luisa',
+                avatar: '_4',
+                visible: true,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        text: 'Lo sai che ha aperto una nuova pizzeria?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        text: 'Si, ma preferirei andare al cinema',
+                        status: 'received'
+                    }
+                ],
+            },
         ],
         activeChat: 1
-
     },
-      methods: {
+    methods: {
         getAvatar : function (userIndex) {
             let { avatar } = this.contacts[userIndex];
             return userImg = `img/avatar${avatar}.jpg`;
@@ -106,19 +104,22 @@ var app = new Vue(
             const lastTxt = getText[lastElement].text.substring(0, 20);
             return lastTxt + "...";
         },
-        getSentText : function(statusIndex) {
-            //con il vfor e parametro index vede lultimo messaggio di tutte chat 
-            // const checkStatus = this.contacts[indexxxx].messages[this.activeChat].status;
-            // console.log(checkStatus);
-            
-            const checkStatus = this.contacts[this.activeChat].messages[statusIndex].status;
-            const checkdate = this.contacts[this.activeChat].messages[statusIndex].date;
-            const checktxt = this.contacts[this.activeChat].messages[statusIndex].text;
-            console.log(checkStatus, checkdate , checktxt);
+        currentName : function() {
+            const nametest = this.contacts[this.activeChat].name;
+            return nametest;
+        },
+        currentChatData : function() {
+            const checkdate = this.contacts[this.activeChat].messages ;
+            const lastMsgIndex2 = checkdate.length - 1;
+            return checkdate[lastMsgIndex2].date; 
+        },
+        getCurrentAvatar : function() {
+            const findAvatar = this.contacts[this.activeChat].avatar
+            const pathAvatar = `img/avatar${findAvatar}.jpg` 
+            return pathAvatar;
         }
-      }
-} 
-);
+    }
+} );
 
 // Milestone 2
 // Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione

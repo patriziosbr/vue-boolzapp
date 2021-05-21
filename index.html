@@ -49,13 +49,13 @@
             </div> <!-- /bgsearch -->
             <div class="contactsBg">
 
-                <div v-for="(contact, index) in contacts" class="contactContainer" :class="(index == activeChat) ? 'active' : '' ">
+                <div v-for="(contact, index) in contacts" class="contactContainer" :class="(index == activeChat) ? 'active' : '' " @click="">
                     <div class="imgText">
                         <div class="avatarImg">
                             <img :src="getAvatar(index)" :alt="contact.name">
                         </div>
                          <div class="nameContact">
-                            <h4>{{contact.name}}</h4>
+                            <h4>{{ index }} {{contact.name}}</h4>
                             <p>{{ getLastText(index) }}</p>
                         </div>
                     </div>
@@ -70,10 +70,12 @@
         <div class="currentChat">
             <div class="userField">
                 <div class="imgName">
-                    <img src="img/avatar_1.jpg" alt="">
+                    <div >
+                        <img :src="getCurrentAvatar()" alt="">
+                    </div>
                     <div>
-                        <h5>Nome Utente</h5>
-                        <p>Ultimo accesso alle </p>
+                        <h5 >{{ currentName() }}</h5>
+                        <p>{{ currentChatData() }}</p>
                     </div>
                 </div>
                 <div class="iconUser">
@@ -84,24 +86,16 @@
             </div> <!-- /class.userField top right current conversation -->
 
             <div class="messages">
-                <div class="sentRow" v-for="(contact, index) in contacts">
-                    <div class="msg sent" >
-                        <p >{{ getSentText(index) }}</p>
-                        <p class="hour">10/10/2020 16:59:22</p>
+                <div v-for="(message, index) in contacts[activeChat].messages">
+                    <div v-if="message.status == 'sent'" class="msg sent" >
+                        <p>{{ message.text }}</p>
+                        <p class="hour">{{ message.date }}</p>
+                    </div>
+                    <div v-if="message.status == 'received'" class="msg received">
+                        <p>{{ message.text }}</p>
+                        <p class="hour">{{ message.date }}</p>
                     </div>
                 </div>
-                <div class="sentRow">
-                    <div class="msg sent">
-                        <p>Sent text here</p>
-                        <p class="hour">10/10/2020 16:59:22</p>
-                    </div>
-                </div>
-                <div class="msg recived">
-                    <p>recived more text here</p>
-                    <p class="hour">10/10/2020 16:59:22</p>
-                </div>
-                
-               
             </div> <!-- /messages -->
 
             <div class="writeMsgContainer">
