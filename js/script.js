@@ -2,7 +2,7 @@ var app = new Vue(
     {
     el: "#root",
     data: {
-      contacts: [
+        contacts: [
         {
             name: 'Michele',
             avatar: '_1',
@@ -86,15 +86,44 @@ var app = new Vue(
                 }
             ],
         },
-    ]
-       
-      },
-      methods: {
-        
-      }
+        ],
+        activeChat: 1
 
+    },
+      methods: {
+        getAvatar : function (userIndex) {
+            let { avatar } = this.contacts[userIndex];
+            return userImg = `img/avatar${avatar}.jpg`;
+        },
+        getLastData : function (userIndex) {
+            const userMsg = this.contacts[userIndex].messages;
+            const lastMsgIndex = userMsg.length - 1;
+            return userMsg[lastMsgIndex].date;
+        },
+        getLastText: function(userIndex) {
+            const getText =  this.contacts[userIndex].messages;
+            const lastElement = getText.length - 1;
+            const lastTxt = getText[lastElement].text.substring(0, 20);
+            return lastTxt + "...";
+        },
+        getSentText : function(statusIndex) {
+            //con il vfor e parametro index vede lultimo messaggio di tutte chat 
+            // const checkStatus = this.contacts[indexxxx].messages[this.activeChat].status;
+            // console.log(checkStatus);
+            
+            const checkStatus = this.contacts[this.activeChat].messages[statusIndex].status;
+            const checkdate = this.contacts[this.activeChat].messages[statusIndex].date;
+            const checktxt = this.contacts[this.activeChat].messages[statusIndex].text;
+            console.log(checkStatus, checkdate , checktxt);
+        }
+      }
 } 
 );
 
+// Milestone 2
+// Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione
+// Click sul contatto mostra la conversazione del contatto cliccato
+
+// img/avatar_1.jpg
 // Replica della grafica (immagine in allegato) con la possibilità di avere messaggi scritti dall’utente (verdi) e dall’interlocutore (bianco) assegnando due classi CSS diverse;
 // Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto, ricavandoli dall'array contacts qui allegato

@@ -48,20 +48,22 @@
                 </div>
             </div> <!-- /bgsearch -->
             <div class="contactsBg">
-                <div class="contactContainer">
+
+                <div v-for="(contact, index) in contacts" class="contactContainer" :class="(index == activeChat) ? 'active' : '' ">
                     <div class="imgText">
                         <div class="avatarImg">
-                            <img src="./img/avatar_1.jpg" alt="">
+                            <img :src="getAvatar(index)" :alt="contact.name">
                         </div>
                          <div class="nameContact">
-                            <h4>Michele</h4>
-                            <p>Text</p>
+                            <h4>{{contact.name}}</h4>
+                            <p>{{ getLastText(index) }}</p>
                         </div>
                     </div>
                     <div class="dateTime">
-                         <p>10/10/2020 16:59:22</p>
+                         <p>{{ getLastData(index) }}</p>
                     </div>
                 </div>
+
             </div>
         </div> <!-- /chats -->
 
@@ -79,12 +81,12 @@
                     <i class="fas fa-paperclip"></i>
                     <i class="fas fa-ellipsis-v"></i>
                 </div>
-            </div> <!-- /userField 2 -->
+            </div> <!-- /class.userField top right current conversation -->
 
             <div class="messages">
-                <div class="sentRow">
-                    <div class="msg sent">
-                        <p>Sent text here</p>
+                <div class="sentRow" v-for="(contact, index) in contacts">
+                    <div class="msg sent" >
+                        <p >{{ getSentText(index) }}</p>
                         <p class="hour">10/10/2020 16:59:22</p>
                     </div>
                 </div>

@@ -142,6 +142,12 @@ input:focus-visible {
     align-items: flex-start;
     justify-content: space-between;
 }
+.contactContainer:hover{
+    background-color: #ececec;
+}
+.contactContainer.active{
+    background-color: #ececec;
+}
 .avatarImg img {
     height: 60px;
     border-radius: 50%;
@@ -156,11 +162,11 @@ input:focus-visible {
     margin-bottom: 4px;
 }
 .nameContact p {
-    font-size: 13px;
+    font-size: 11px;
     color: #B6B9BB;
 }
 .dateTime p {
-    font-size: 11px;
+    font-size: 9px;
     color: #B6B9BB;
 }
 /*START CURRENT CHAT*/
@@ -199,7 +205,7 @@ input:focus-visible {
     font-size: 13px;
 }
 .hour {
-    font-size: 11px !important;
+    font-size: 9px !important;
     color: #B6B9BB;
     position: absolute;
     bottom: 4px;
