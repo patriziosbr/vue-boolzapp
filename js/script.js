@@ -86,7 +86,8 @@ var app = new Vue({
                 ],
             },
         ],
-        activeChat: 0
+        activeChat: 0,
+        newMessage: ""
     },
     methods: {
         getAvatar : function (userIndex) {
@@ -120,6 +121,17 @@ var app = new Vue({
         },
         // getChat: function(userIndex) {
         //     return this.activeChat = userIndex 
+        // }
+        newMsg : function() {
+            const getMess = this.contacts[this.activeChat].messages;
+            let currentDateHour = dayjs().format('DD/MM/YYYY HH:mm:s') 
+            getMess.push( { date: currentDateHour, text: this.newMessage, status : "sent" })
+            this.newMessage = ""
+        },
+        // getcurrentDate : function() {
+        //     let currentDate = dayjs().format('DD/MM/YYYY HH:mm:s') 
+            
+        //     return currentDate
         // }
     }
 } );
