@@ -49,13 +49,13 @@
             </div> <!-- /bgsearch -->
             <div class="contactsBg">
 
-                <div v-for="(contact, index) in contacts" class="contactContainer" :class="(index == activeChat) ? 'active' : '' " @click="">
+                <div v-for="(contact, index) in contacts" class="contactContainer" :class="(index == activeChat) ? 'active' : '' " @click="getChat(index)">
                     <div class="imgText">
                         <div class="avatarImg">
                             <img :src="getAvatar(index)" :alt="contact.name">
                         </div>
                          <div class="nameContact">
-                            <h4>{{ index }} {{contact.name}}</h4>
+                            <h4>{{contact.name}}</h4>
                             <p>{{ getLastText(index) }}</p>
                         </div>
                     </div>

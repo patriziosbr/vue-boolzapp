@@ -86,7 +86,7 @@ var app = new Vue({
                 ],
             },
         ],
-        activeChat: 1
+        activeChat: 0
     },
     methods: {
         getAvatar : function (userIndex) {
@@ -117,6 +117,9 @@ var app = new Vue({
             const findAvatar = this.contacts[this.activeChat].avatar
             const pathAvatar = `img/avatar${findAvatar}.jpg` 
             return pathAvatar;
+        },
+        getChat: function(userIndex) {
+            return this.activeChat = userIndex 
         }
     }
 } );
