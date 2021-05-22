@@ -24,7 +24,9 @@
             <div class="userField">
                 <div class="imgName">
                     <img src="img/avatar_io.jpg" alt="">
-                    <h5>Nome Utente</h5>
+                    <div class="marginlft">
+                        <h5>Nome Utente</h5>
+                    </div>
                 </div>
                 <div class="iconUser">
                     <i class="fas fa-circle-notch"></i>
@@ -49,7 +51,7 @@
             </div> <!-- /bgsearch -->
             <div class="contactsBg">
 
-                <div v-for="(contact, index) in contacts" class="contactContainer" :class="(index == activeChat) ? 'active' : '' " @click="getChat(index)">
+                <div v-for="(contact, index) in contacts" class="contactContainer" :class="(index == activeChat) ? 'active' : '' " @click="activeChat = index ">
                     <div class="imgText">
                         <div class="avatarImg">
                             <img :src="getAvatar(index)" :alt="contact.name">
@@ -73,7 +75,7 @@
                     <div >
                         <img :src="getCurrentAvatar()" alt="">
                     </div>
-                    <div>
+                    <div class="marginlft">
                         <h5 >{{ currentName() }}</h5>
                         <p>{{ currentChatData() }}</p>
                     </div>

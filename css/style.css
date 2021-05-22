@@ -23,6 +23,9 @@ body{
 .bg-container {
     position: relative;
 }
+.marginlft {
+    margin-left: 8px;
+}
 #root{
     margin: 0 auto;
     background-color: #c4c4c4;
@@ -69,7 +72,7 @@ body{
     cursor: pointer;
 }
 .imgName P {
-    color: #B6B9BB;
+    color: #878a8c;
     font-size: 11px;
 }
 /* notify */
@@ -163,11 +166,11 @@ input:focus-visible {
 }
 .nameContact p {
     font-size: 11px;
-    color: #B6B9BB;
+    color: #878a8c;
 }
 .dateTime p {
     font-size: 9px;
-    color: #B6B9BB;
+    color: #878a8c;
 }
 /*START CURRENT CHAT*/
 /*chatbox*/
@@ -181,20 +184,15 @@ input:focus-visible {
     flex-direction: column;
 }
 .msg {
-    height: 40px;
-    width: 250px;
-    padding: 8px;
+    min-height: 50px;
+    min-width: 250px;
+    max-width: 300px;
     border-radius: 5px;
     display: flex;
     align-items: center;
     position: relative;
     margin: 4px 0;
 }
-.sentRow {
-    display: flex;
-    justify-content: flex-end;
-}
-
 .sent {
     float: right;
     background-color: #D5F9BA;
@@ -205,13 +203,15 @@ input:focus-visible {
 }
 .msg p{
     font-size: 13px;
+    margin: 8px;
 }
 .hour {
     font-size: 9px !important;
-    color: #B6B9BB;
+    color: #878a8c;
     position: absolute;
     bottom: 4px;
     right: 4px;
+    margin: 0 !important;
 }
 /*write messages*/
 .writeMsgContainer {

@@ -118,9 +118,9 @@ var app = new Vue({
             const pathAvatar = `img/avatar${findAvatar}.jpg` 
             return pathAvatar;
         },
-        getChat: function(userIndex) {
-            return this.activeChat = userIndex 
-        }
+        // getChat: function(userIndex) {
+        //     return this.activeChat = userIndex 
+        // }
     }
 } );
 
