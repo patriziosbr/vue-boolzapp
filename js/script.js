@@ -87,7 +87,8 @@ var app = new Vue({
             },
         ],
         activeChat: 0,
-        newMessage: ""
+        newMessage: "",
+        searchChat: ""
     },
     methods: {
         getAvatar : function (userIndex) {
@@ -121,20 +122,38 @@ var app = new Vue({
         },
         // getChat: function(userIndex) {
         //     return this.activeChat = userIndex 
-        // }
+        // } 
+        // funzione altrenativa per assegnale al click index a currentChat
         newMsg : function() {
             const getMess = this.contacts[this.activeChat].messages;
-            let currentDateHour = dayjs().format('DD/MM/YYYY HH:mm:s') 
-            getMess.push( { date: currentDateHour, text: this.newMessage, status : "sent" })
-            this.newMessage = ""
+            let currentDateHour = dayjs().format('DD/MM/YYYY HH:mm:s')
+            if(this.newMessage.length > 0) {
+                getMess.push( { date: currentDateHour, text: this.newMessage, status : "sent" })
+            }
+            this.newMessage = "";
+            setTimeout( () => getMess.push( { date: currentDateHour, text: "ok", status : "received" }), 1000);
         },
-        // getcurrentDate : function() {
-        //     let currentDate = dayjs().format('DD/MM/YYYY HH:mm:s') 
-            
-        //     return currentDate
-        // }
+        chatFinder : function() {
+           const nameFound = this.contacts.filter( (nameResult) => { 
+                if(nameResult.name == this.searchChat) {
+                    // console.log(nameResult);
+                    // return nameResult;
+                    
+                }
+                console.log(this.searchChat);
+                console.log(nameResult.name);
+                console.log(nameResult.name.includes(this.searchChat));
+            } );
+            console.log(nameFound);
+        }
     }
 } );
+// Milestone 4
+// Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+
+// Milestone 3
+// Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde
+// Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
 
 // Milestone 2
 // Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione

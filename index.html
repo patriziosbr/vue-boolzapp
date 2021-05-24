@@ -48,7 +48,11 @@
             <div class="bgsearch ">
                 <div class="inputcontainer">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Cerca o inizia una nuava chat">
+                    <div >
+                        <!-- mileston4 da fare -->
+                        <input v-model="searchChat" @keyDown.enter="chatFinder"
+                        type="text" placeholder="Cerca o inizia una nuova chat">
+                    </div>
                 </div>
             </div> <!-- /bgsearch -->
             <div class="contactsBg">
