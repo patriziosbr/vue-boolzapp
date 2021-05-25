@@ -236,9 +236,7 @@ input:focus-visible {
 .contactContainer.hide {
     display: none;
 }
-.noVisible {
-    display: none;
-}
+
 .showAlert {
     display: block;
     text-align: center;

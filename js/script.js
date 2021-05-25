@@ -89,7 +89,7 @@ var app = new Vue({
         activeChat: 0,
         newMessage: "",
         searchChat: "",
-        showAlert: false
+        visibleContacts: 999
     },
     // computed: {
     //     chatFinder : function() {
@@ -146,38 +146,24 @@ var app = new Vue({
             setTimeout( () => getMess.push( { date: dayjs().format('DD/MM/YYYY HH:mm:ss'), text: "ok", status : "received" }), 1000);
         },
         chatFinder : function() {
+            let numb = 0;
                 this.contacts.forEach( (contact) => {
                 const match = contact.name.startsWith(this.searchChat.toUpperCase());
                 if (match) {
+                    numb++;
                     contact.visible = true;
                 } else {
                     contact.visible = false;
                 }
 
-                // console.log('show alert ', this.showAlert);
-                // console.log( 'match', match);
-                // console.log(contact.visible);
-                console.log('this search chat', this.searchChat);
-                return match
-            })
+                
+            });
+            this.visibleContacts = numb;
            
-        },
-        getAlert : function() {
-            this.contacts.forEach(
-                (contact) => {
-                    const visibility = contact.visible;
-                    if( visibility == false ) {
-                        return this.showAlert = true
-                    } else if (visibility == true){
-                        return this.showAlert = false
-                    }
-                   
-                console.log( 'visibility', visibility);
-                console.log(contact.visible);
-                    return visibility
-                }
-            )
         }
+           
+
+        
         // chatFinder : function() {
         //     const nameFound = this.contacts.filter((contact) => { 
         //         const match = contact.name.includes(this.searchChat);
