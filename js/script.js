@@ -89,7 +89,7 @@ var app = new Vue({
         activeChat: 0,
         newMessage: "",
         searchChat: "",
-        visibleContacts: false
+        visibleContacts: 2
     },
     // computed: {
     //     chatFinder : function() {
@@ -147,15 +147,24 @@ var app = new Vue({
         },
         chatFinder : function() {
             let numb = 0;
+            // let regEx = 
                 this.contacts.forEach( (contact) => {
-                const match = contact.name.startsWith(this.searchChat.toUpperCase());
+                const match = contact.name.includes(this.searchChat);
+                // const matchUpperCase = contact.name.includes(this.searchChat.toUpperCase());
+
                 if (match) {
-                    contact.visible = true;
                     numb++;
+                    contact.visible = true;
                 } else {
-                    
                     contact.visible = false;
                 }
+
+                // if(matchUpperCase) {
+                //     numb++;
+                //     contact.visible = true
+                // } else {
+                //     contact.visible = false;
+                // }
 
                 
             });
