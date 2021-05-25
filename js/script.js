@@ -144,32 +144,37 @@ var app = new Vue({
             }
             this.newMessage = "";
             setTimeout( () => getMess.push( { date: dayjs().format('DD/MM/YYYY HH:mm:ss'), text: "ok", status : "received" }), 1000);
-        },
-        chatFinder : function() {
-            let numb = 0; 
-                this.contacts.forEach( (contact) => {
-                const match = contact.name.includes(this.searchCha);
-                const matchUpperCase = contact.name.includes(this.searchChat.toUpperCase());
-                const matchTolowerCase = contact.name.includes(this.searchChat.toLowerCase());
-
-                if (match) {
-                    numb++;
-                    contact.visible = true;
-                } else if (matchUpperCase) {
-                    numb++;
-                    contact.visible = true;
-                } else if (matchTolowerCase) {
-                    numb++;
-                    contact.visible = true;
-                } else {
-                    contact.visible = false;
-                }
-            });
-            this.visibleContacts = numb;
-           
         }
 
-        // SOLUZONE CON startsWith()
+
+        // SOLUZIONE CON includes() upper and loweCase /////////////////
+
+        // chatFinder : function() {
+        //     let numb = 0; 
+        //         this.contacts.forEach( (contact) => {
+        //         const match = contact.name.includes(this.searchCha);
+        //         const matchUpperCase = contact.name.includes(this.searchChat.toUpperCase());
+        //         const matchTolowerCase = contact.name.includes(this.searchChat.toLowerCase());
+
+        //         if (match) {
+        //             numb++;
+        //             contact.visible = true;
+        //         } else if (matchUpperCase) {
+        //             numb++;
+        //             contact.visible = true;
+        //         } else if (matchTolowerCase) {
+        //             numb++;
+        //             contact.visible = true;
+        //         } else {
+        //             contact.visible = false;
+        //         }
+        //     });
+        //     this.visibleContacts = numb;
+           
+        // }
+
+        // SOLUZONE CON startsWith() ///////////////////
+
         // chatFinder : function() {
         //     let numb = 0; 
         //         this.contacts.forEach( (contact) => {
@@ -191,7 +196,11 @@ var app = new Vue({
         
        
     }
-} );
+} ); //chiusura vue app
+
+
+
+
 // Milestone 4
 // Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
 
