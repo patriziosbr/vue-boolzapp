@@ -89,7 +89,7 @@ var app = new Vue({
         activeChat: 0,
         newMessage: "",
         searchChat: "",
-        visibleContacts: 999
+        visibleContacts: false
     },
     // computed: {
     //     chatFinder : function() {
@@ -150,9 +150,10 @@ var app = new Vue({
                 this.contacts.forEach( (contact) => {
                 const match = contact.name.startsWith(this.searchChat.toUpperCase());
                 if (match) {
-                    numb++;
                     contact.visible = true;
+                    numb++;
                 } else {
+                    
                     contact.visible = false;
                 }
 
