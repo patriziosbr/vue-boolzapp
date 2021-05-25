@@ -48,11 +48,12 @@
             <div class="bgsearch ">
                 <div class="inputcontainer">
                     <i class="fas fa-search"></i>
-                    <div >
-                        <!-- mileston4 da fare -->
-                        <input v-model="searchChat" @keyup="chatFinder()"
-                        type="text" placeholder="Cerca o inizia una nuova chat">
-                        <!-- {{chatFinder}} -->
+                    <div>
+                        <!-- mileston4 da fare SOLUZIONE PER INCLUDES() O STARS WITH -->
+                        <input v-model="searchChat" @keyup="chatFinder()" type="text" placeholder="Cerca o inizia una nuova chat">
+                        <!-- mileston4 da fare SOLUZIONE PER COMPUTED-->
+                        <!-- <input v-model="contact" type="text" placeholder="Cerca o inizia una nuova chat"> -->
+                        <!-- {{ chatFinder }} -->
                     </div>
                 </div>
             </div> <!-- /bgsearch -->
@@ -63,6 +64,7 @@
                         <div class="avatarImg">
                             <img :src="getAvatar(index)" :alt="contact.name">
                         </div>
+                        
                          <div class="nameContact">
                             <h4>{{contact.name}}</h4>
                             <p>{{ getLastText(index) }}</p>
@@ -74,6 +76,7 @@
                     
                 </div>
                 
+                <!-- da utilizzare con includes() o startsWith() -->
                 <div class="showAlert" v-if="visibleContacts == 0"> <p>no contact found</p>  </div>
 
             </div>

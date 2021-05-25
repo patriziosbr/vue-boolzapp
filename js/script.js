@@ -98,10 +98,7 @@ var app = new Vue({
     //             if (match == this.searchChat) {
     //                 contact.visible = false;
     //             }
-                
-    //         })
-    //     }
-    // },
+
     methods: {
         getAvatar : function (userIndex) {
             let { avatar } = this.contacts[userIndex];
@@ -144,34 +141,33 @@ var app = new Vue({
             }
             this.newMessage = "";
             setTimeout( () => getMess.push( { date: dayjs().format('DD/MM/YYYY HH:mm:ss'), text: "ok", status : "received" }), 1000);
-        }
+        },
 
 
         // SOLUZIONE CON includes() upper and loweCase /////////////////
+        chatFinder : function() {
+            let numb = 0; 
+                this.contacts.forEach( (contact) => {
+                const match = contact.name.includes(this.searchCha);
+                const matchUpperCase = contact.name.includes(this.searchChat.toUpperCase());
+                const matchTolowerCase = contact.name.includes(this.searchChat.toLowerCase());
 
-        // chatFinder : function() {
-        //     let numb = 0; 
-        //         this.contacts.forEach( (contact) => {
-        //         const match = contact.name.includes(this.searchCha);
-        //         const matchUpperCase = contact.name.includes(this.searchChat.toUpperCase());
-        //         const matchTolowerCase = contact.name.includes(this.searchChat.toLowerCase());
-
-        //         if (match) {
-        //             numb++;
-        //             contact.visible = true;
-        //         } else if (matchUpperCase) {
-        //             numb++;
-        //             contact.visible = true;
-        //         } else if (matchTolowerCase) {
-        //             numb++;
-        //             contact.visible = true;
-        //         } else {
-        //             contact.visible = false;
-        //         }
-        //     });
-        //     this.visibleContacts = numb;
+                if (match) {
+                    numb++;
+                    contact.visible = true;
+                } else if (matchUpperCase) {
+                    numb++;
+                    contact.visible = true;
+                } else if (matchTolowerCase) {
+                    numb++;
+                    contact.visible = true;
+                } else {
+                    contact.visible = false;
+                }
+            });
+            this.visibleContacts = numb;
            
-        // }
+        }
 
         // SOLUZONE CON startsWith() ///////////////////
 
