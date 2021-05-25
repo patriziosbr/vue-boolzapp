@@ -88,7 +88,8 @@ var app = new Vue({
         ],
         activeChat: 0,
         newMessage: "",
-        searchChat: ""
+        searchChat: "",
+        showAlert: false
     },
     // computed: {
     //     chatFinder : function() {
@@ -137,27 +138,45 @@ var app = new Vue({
         // funzione altrenativa per assegnale al click index a currentChat
         newMsg : function() {
             const getMess = this.contacts[this.activeChat].messages;
-            let currentDateHour = dayjs().format('DD/MM/YYYY HH:mm:s')
+    
             if(this.newMessage.length > 0) {
-                getMess.push( { date: currentDateHour, text: this.newMessage, status : "sent" })
+                getMess.push( { date: dayjs().format('DD/MM/YYYY HH:mm:ss'), text: this.newMessage, status : "sent" })
             }
             this.newMessage = "";
-            setTimeout( () => getMess.push( { date: currentDateHour, text: "ok", status : "received" }), 1000);
+            setTimeout( () => getMess.push( { date: dayjs().format('DD/MM/YYYY HH:mm:ss'), text: "ok", status : "received" }), 1000);
         },
         chatFinder : function() {
                 this.contacts.forEach( (contact) => {
                 const match = contact.name.startsWith(this.searchChat.toUpperCase());
-                if (!match) {
-                    contact.visible = false;
-                } else {
+                if (match) {
                     contact.visible = true;
+                } else {
+                    contact.visible = false;
                 }
-                
-                console.log(match);
-                console.log(contact);
+
+                // console.log('show alert ', this.showAlert);
+                // console.log( 'match', match);
+                // console.log(contact.visible);
+                console.log('this search chat', this.searchChat);
                 return match
             })
            
+        },
+        getAlert : function() {
+            this.contacts.forEach(
+                (contact) => {
+                    const visibility = contact.visible;
+                    if( visibility == false ) {
+                        return this.showAlert = true
+                    } else if (visibility == true){
+                        return this.showAlert = false
+                    }
+                   
+                console.log( 'visibility', visibility);
+                console.log(contact.visible);
+                    return visibility
+                }
+            )
         }
         // chatFinder : function() {
         //     const nameFound = this.contacts.filter((contact) => { 

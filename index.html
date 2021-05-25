@@ -50,7 +50,7 @@
                     <i class="fas fa-search"></i>
                     <div >
                         <!-- mileston4 da fare -->
-                        <input v-model="searchChat" @keyDown.enter="chatFinder"
+                        <input v-model="searchChat" @keyup="chatFinder(); getAlert()"
                         type="text" placeholder="Cerca o inizia una nuova chat">
                         <!-- {{chatFinder}} -->
                     </div>
@@ -71,7 +71,10 @@
                     <div class="dateTime">
                          <p>{{ getLastData(index) }}</p>
                     </div>
+                    
                 </div>
+                
+                <div class="noVisible" :class="{ 'showAlert' : showAlert == true}" > <p>no contact found</p>  </div>
 
             </div>
         </div> <!-- /chats -->
