@@ -233,6 +233,9 @@ input:focus-visible {
     border: none;
     border-radius: 5px;
 }
+.contactContainer.hide {
+    display: none;
+}
 
 
 

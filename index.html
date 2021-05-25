@@ -52,12 +52,13 @@
                         <!-- mileston4 da fare -->
                         <input v-model="searchChat" @keyDown.enter="chatFinder"
                         type="text" placeholder="Cerca o inizia una nuova chat">
+                        <!-- {{chatFinder}} -->
                     </div>
                 </div>
             </div> <!-- /bgsearch -->
             <div class="contactsBg">
 
-                <div v-for="(contact, index) in contacts" class="contactContainer" :class="(index == activeChat) ? 'active' : '' " @click="activeChat = index ">
+                <div v-for="(contact, index) in contacts" class="contactContainer" :class="{ 'active': index == activeChat, 'hide': contact.visible == false }" @click="activeChat = index">
                     <div class="imgText">
                         <div class="avatarImg">
                             <img :src="getAvatar(index)" :alt="contact.name">

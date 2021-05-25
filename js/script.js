@@ -90,6 +90,17 @@ var app = new Vue({
         newMessage: "",
         searchChat: ""
     },
+    // computed: {
+    //     chatFinder : function() {
+    //         this.contacts.forEach( (contact) => {
+    //             const match = contact.name;
+    //             if (match == this.searchChat) {
+    //                 contact.visible = false;
+    //             }
+                
+    //         })
+    //     }
+    // },
     methods: {
         getAvatar : function (userIndex) {
             let { avatar } = this.contacts[userIndex];
@@ -134,18 +145,44 @@ var app = new Vue({
             setTimeout( () => getMess.push( { date: currentDateHour, text: "ok", status : "received" }), 1000);
         },
         chatFinder : function() {
-           const nameFound = this.contacts.filter( (nameResult) => { 
-                if(nameResult.name == this.searchChat) {
-                    // console.log(nameResult);
-                    // return nameResult;
-                    
+                this.contacts.forEach( (contact) => {
+                const match = contact.name.startsWith(this.searchChat.toUpperCase());
+                if (!match) {
+                    contact.visible = false;
+                } else {
+                    contact.visible = true;
                 }
-                console.log(this.searchChat);
-                console.log(nameResult.name);
-                console.log(nameResult.name.includes(this.searchChat));
-            } );
-            console.log(nameFound);
+                
+                console.log(match);
+                console.log(contact);
+                return match
+            })
+           
         }
+        // chatFinder : function() {
+        //     const nameFound = this.contacts.filter((contact) => { 
+        //         const match = contact.name.includes(this.searchChat);
+        //         console.log(this.searchChat);
+        //         console.log(contact.name);
+        //         console.log(match);
+        //         if (match){
+        //             contact.visible = false;
+        //         }
+        //         return contact;
+        //     } );
+        //     console.log("nameFound",nameFound);
+        // }
+        // chatFinder : function() {
+        //     const nameFound = this.contacts.filter((contact) => { 
+        //         const match = contact.name.includes(this.searchChat);
+
+        //         if (match) {
+        //             return contact;
+        //         }
+        //         this.searchChat = "";
+        //     } );
+        //     console.log("nameFound", nameFound);
+        // }
     }
 } );
 // Milestone 4
