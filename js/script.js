@@ -146,58 +146,50 @@ var app = new Vue({
             setTimeout( () => getMess.push( { date: dayjs().format('DD/MM/YYYY HH:mm:ss'), text: "ok", status : "received" }), 1000);
         },
         chatFinder : function() {
-            let numb = 0;
-            // let regEx = 
+            let numb = 0; 
                 this.contacts.forEach( (contact) => {
-                const match = contact.name.includes(this.searchChat);
-                // const matchUpperCase = contact.name.includes(this.searchChat.toUpperCase());
+                const match = contact.name.includes(this.searchCha);
+                const matchUpperCase = contact.name.includes(this.searchChat.toUpperCase());
+                const matchTolowerCase = contact.name.includes(this.searchChat.toLowerCase());
 
                 if (match) {
+                    numb++;
+                    contact.visible = true;
+                } else if (matchUpperCase) {
+                    numb++;
+                    contact.visible = true;
+                } else if (matchTolowerCase) {
                     numb++;
                     contact.visible = true;
                 } else {
                     contact.visible = false;
                 }
-
-                // if(matchUpperCase) {
-                //     numb++;
-                //     contact.visible = true
-                // } else {
-                //     contact.visible = false;
-                // }
-
-                
             });
             this.visibleContacts = numb;
            
         }
+
+        // SOLUZONE CON startsWith()
+        // chatFinder : function() {
+        //     let numb = 0; 
+        //         this.contacts.forEach( (contact) => {
+        //         const match = contact.name.startsWith(this.searchChat.toUpperCase());
+
+        //         if (match) {
+        //             numb++;
+        //             contact.visible = true;
+        //         }
+        //         else {
+        //             contact.visible = false;
+        //         }
+        //     });
+        //     this.visibleContacts = numb;
+           
+        // }
            
 
         
-        // chatFinder : function() {
-        //     const nameFound = this.contacts.filter((contact) => { 
-        //         const match = contact.name.includes(this.searchChat);
-        //         console.log(this.searchChat);
-        //         console.log(contact.name);
-        //         console.log(match);
-        //         if (match){
-        //             contact.visible = false;
-        //         }
-        //         return contact;
-        //     } );
-        //     console.log("nameFound",nameFound);
-        // }
-        // chatFinder : function() {
-        //     const nameFound = this.contacts.filter((contact) => { 
-        //         const match = contact.name.includes(this.searchChat);
-
-        //         if (match) {
-        //             return contact;
-        //         }
-        //         this.searchChat = "";
-        //     } );
-        //     console.log("nameFound", nameFound);
-        // }
+       
     }
 } );
 // Milestone 4
