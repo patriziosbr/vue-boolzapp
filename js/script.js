@@ -132,36 +132,42 @@ var app = new Vue({
         // getChat: function(userIndex) {
         //     return this.activeChat = userIndex 
         // } 
-        // funzione altrenativa per assegnale al click index a currentChat
+        // funzione altrenativa per assegnare al click index a currentChat
         newMsg : function() {
             const getMess = this.contacts[this.activeChat].messages;
     
             if(this.newMessage.length > 0) {
-                getMess.push( { date: dayjs().format('DD/MM/YYYY HH:mm:ss'), text: this.newMessage, status : "sent" })
+                getMess.push( { date: dayjs().format('DD/MM/YYYY HH:mm:ss'), text: this.newMessage, status : "sent" });
+                
+                setTimeout( () => getMess.push( { date: dayjs().format('DD/MM/YYYY HH:mm:ss'), text: "ok", status : "received" }), 1000);
             }
             this.newMessage = "";
-            setTimeout( () => getMess.push( { date: dayjs().format('DD/MM/YYYY HH:mm:ss'), text: "ok", status : "received" }), 1000);
         },
 
 
         // SOLUZIONE CON includes() upper and loweCase /////////////////
+
+        // Ho scritto un mucchio di controlli inutili!!! bastava definire tutto in minuscolo sia la ricerca che la stringa ricercata !! grrrrrrrrr
+
         chatFinder : function() {
             let numb = 0; 
                 this.contacts.forEach( (contact) => {
-                const match = contact.name.includes(this.searchCha);
-                const matchUpperCase = contact.name.includes(this.searchChat.toUpperCase());
-                const matchTolowerCase = contact.name.includes(this.searchChat.toLowerCase());
+                const match = contact.name.toLowerCase().includes(this.searchChat.toLowerCase());
+                // const matchUpperCase = contact.name.includes(this.searchChat.toUpperCase());
+                // const matchTolowerCase = contact.name.includes(this.searchChat.toLowerCase());
 
                 if (match) {
                     numb++;
                     contact.visible = true;
-                } else if (matchUpperCase) {
-                    numb++;
-                    contact.visible = true;
-                } else if (matchTolowerCase) {
-                    numb++;
-                    contact.visible = true;
-                } else {
+                } 
+                // else if (matchUpperCase) {
+                //     numb++;
+                //     contact.visible = true;
+                // } else if (matchTolowerCase) {
+                //     numb++;
+                //     contact.visible = true;
+                // } 
+                else {
                     contact.visible = false;
                 }
             });
